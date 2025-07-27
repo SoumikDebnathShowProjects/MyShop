@@ -1,0 +1,21 @@
+/* for about page */
+
+/* Default height */
+.about-img {
+    margin-top: 4px;
+    height: 400px;
+  }
+  
+  /* Media query for phones (up to 576px) */
+  @media (max-width: 576px) {
+    .about-img {
+      height: 200px; /* Adjust height for phones */
+    }
+  }
+  
+  /* Media query for laptops and larger screens */
+  @media (min-width: 992px) {
+    .banner-img {
+      height: 400px; /* Adjust height for laptops and larger screens */
+    }
+  }
