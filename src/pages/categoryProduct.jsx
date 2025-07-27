@@ -19,7 +19,7 @@ const CategoryProduct = () => {
   const getPrductsByCat = async () => {
     try {
       const { data } = await axios.get(
-        `/api/v1/product/product-category/${params.slug}`
+        `http://localhost:8080/api/v1/product/product-category/${params.slug}`
       );
       setProducts(data?.products);
       setCategory(data?.category);
@@ -45,7 +45,7 @@ const CategoryProduct = () => {
                   key={p._id}
                 >
                   <img
-                    src={`/api/v1/product/product-photo/${p._id}`}
+                    src={`http://localhost:8080/api/v1/product/product-photo/${p._id}`}
                     className="card-img-top"
                     style={{
                       width: "100%",

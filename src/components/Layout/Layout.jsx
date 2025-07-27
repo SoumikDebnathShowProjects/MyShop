@@ -1,20 +1,16 @@
 import React from "react";
 import Footer from "./Footer";
 import Header from "./Header";
+import { Toaster } from 'react-hot-toast';
 
-import toast, { Toaster } from 'react-hot-toast';
-// import {Helmet} from 'react-helmet'
 const Layout = ({ children }) => {
   return (
-    <div>
-       {/* <Helmet>
-                <meta charSet="utf-8" />
-                <title>My Title</title>
-          </Helmet> */}
+    <div className="flex flex-col min-h-screen bg-gradient-to-b from-slate-900 to-purple-900/10">
       <Header />
-      <main style={{ minHeight: "70vh" }}>
-        <Toaster/>
-        {children}</main>
+      <main className="flex-grow">
+        <Toaster />
+        {children}
+      </main>
       <Footer />
     </div>
   );
