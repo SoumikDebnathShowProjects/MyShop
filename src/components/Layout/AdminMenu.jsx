@@ -31,6 +31,11 @@ const AdminMenu = () => {
       name: "Manage Orders",
       icon: <FaClipboardList className="mr-3" size={18} />
     },
+    // {
+    //   path: "/dashboard/admin/homeManage",
+    //   name: "Manage HomePage",
+    //   icon: <FaUsersCog className="mr-3" size={18} />
+    // }
     // Uncomment when needed:
     // {
     //   path: "/dashboard/admin/users",

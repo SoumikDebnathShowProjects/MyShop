@@ -25,6 +25,7 @@ import CartPage from "./pages/CartPage";
 import PrivateRoute from "./components/Routes/PrivateRoute";
 import 'react-toastify/dist/ReactToastify.css';
 import AdminRoute from "./components/Routes/AdminRoute";
+// import AdminHomepageController from "./pages/Admin/AdminHomepageController";
 
 function App() {
   return (
@@ -62,6 +63,7 @@ function App() {
             <Route path="admin/products" element={<Products />} />
             <Route path="admin/orders" element={<AdminOrders />} />
             <Route path="admin/users" element={<Users />} />
+            {/* <Route path="admin/adminHomePageController" element={<AdminHomepageController/>} /> */}
           </Route>
         </Route>
 

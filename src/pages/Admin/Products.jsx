@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { FaBoxOpen, FaSearch, FaEdit } from "react-icons/fa";
-import Loading from "../../components/Loading";
+import Loading from "../../components/loading";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
