@@ -1,70 +1,89 @@
-# Getting Started with Create React App
+# GadgetGalaxy
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+GadgetGalaxy is a comprehensive e-commerce website developed using the MERN stack. It offers a user-friendly platform for buying gadgets and electronics, with features such as cart management, real-time order tracking, and an intuitive admin panel for seamless product and category updates.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **Cart Management**: Users can easily add and remove items from their shopping carts.
+- **Real-time Order Tracking**: Users can track the status of their orders in real-time.
+- **Admin Panel**: Admins have access to an intuitive dashboard for managing products, categories, and orders.
+- **Rest API and Context API**: Efficient data management using Rest API and context API.
+- **Secure Paypal Payment Gateway**: Integration of a secure payment gateway for smooth transactions.
+- **Advanced Filtering Options**: Users can filter products by category and price for enhanced browsing experience.
 
-### `npm start`
+## Screenshots
+## Filtering products by category as well as by price
+![App Screenshot](https://github.com/akashghosh256/Ecommerce-App/blob/main/screenshots/filter.png)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Admin order status management option for users-orders placed
+![App Screenshot](https://github.com/akashghosh256/Ecommerce-App/blob/main/screenshots/orderAdmin.png)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Admin product management option like photos, price, description etc
+![App Screenshot](https://github.com/akashghosh256/Ecommerce-App/blob/main/screenshots/manageproduct.png)
 
-### `npm run build`
+## Admin category management
+![App Screenshot](https://github.com/akashghosh256/Ecommerce-App/blob/main/screenshots/newcategory.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Admin adding new product
+![App Screenshot](https://github.com/akashghosh256/Ecommerce-App/blob/main/screenshots/createproduct.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## Added features such as Infinite Scroll and skeleton effect for loading new products
+![App Screenshot](https://github.com/akashghosh256/Ecommerce-App/blob/main/screenshots/infinitescroll.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## User cart and payment gateway
+![App Screenshot](https://github.com/akashghosh256/Ecommerce-App/blob/main/screenshots/payment.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Responsive website for mobile device users, featuring a search option for products.
 
-## Learn More
+<img src="https://github.com/akashghosh256/Ecommerce-App/blob/main/screenshots/phone2.jpg" width="40%" height="34%">
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## User can check order status
+<img src="https://github.com/akashghosh256/Ecommerce-App/blob/main/screenshots/phone3.jpg" width="40%" height="34%">
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Admin Credentials:
+Email: admin@admin
+Password: admin
 
-### Analyzing the Bundle Size
+User Credentials:
+Email: user@user
+Password: user
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Run Locally
 
-### Advanced Configuration
+Clone the project
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```bash
+  git clone https://github.com/akashghosh256/Ecommerce-App
+```
 
-### Deployment
+Go to the project directory
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```bash
+cd Ecommerce-App
+```
 
-### `npm run build` fails to minify
+Install dependencies
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```bash
+  npm install
+```
+
+Start the server and client together
+
+```bash
+  npm run dev
+```
+
+
+
+

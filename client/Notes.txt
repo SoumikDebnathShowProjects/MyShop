@@ -1,0 +1,76 @@
+infinite scrolling = https://www.youtube.com/watch?v=F51xUcV3uH0&ab_channel=ThapaTechnical
+added skeleton loading animation
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+----------------------------------------------------------------.env------------------------------------------------------------------
+PORT = 8080
+DEV_MODE = development mode
+DATABASE = mongodb+srv://akashghosh256:Akash1234@ecommercedatabase.ji64rnb.mongodb.net/?retryWrites=true&w=majority
+JWT_SECRET_KEY = WHYAREYOUSEEINGTHISBROSEEXXXCOMGETTHEHELLOUTOFHERE
+BRAINTREE_MERCHANT_ID = 4dtxswdymncmw36v
+BRAINTREE_PUBLIC_KEY = qx3qtbh5nk3kfg56
+BRAINTREE_PRIVATE_KEY = e589fbb024fa55edefd9d936a4a15921
+
+
+
+
+
+
+
+
+
+
+
+
+
+
