@@ -19,7 +19,7 @@ const Footer = () => {
               </span>
             </Link>
             <p className="text-white/70 text-sm">
-              Your one-stop shop for the latest gadgets and tech accessories.
+              Your one-stop shop for the daily accessories.
             </p>
             <div className="flex space-x-4">
               <a href="#" className="text-white/70 hover:text-white transition-colors duration-300">
@@ -65,77 +65,9 @@ const Footer = () => {
                   Privacy Policy
                 </Link>
               </li>
-              <li>
-                <Link 
-                  to="/" 
-                  className="text-white/70 hover:text-white text-sm transition-colors duration-300"
-                >
-                  Terms & Conditions
-                </Link>
-              </li>
             </ul>
           </div>
 
-          {/* Customer Service */}
-          <div className="space-y-3">
-            <h3 className="text-white font-semibold text-lg">Customer Service</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link 
-                  to="/" 
-                  className="text-white/70 hover:text-white text-sm transition-colors duration-300"
-                >
-                  FAQ
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  to="/" 
-                  className="text-white/70 hover:text-white text-sm transition-colors duration-300"
-                >
-                  Shipping Policy
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  to="/" 
-                  className="text-white/70 hover:text-white text-sm transition-colors duration-300"
-                >
-                  Returns & Refunds
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  to="/" 
-                  className="text-white/70 hover:text-white text-sm transition-colors duration-300"
-                >
-                  Track Your Order
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Newsletter */}
-          <div className="space-y-3">
-            <h3 className="text-white font-semibold text-lg">Newsletter</h3>
-            <p className="text-white/70 text-sm">
-              Subscribe to our newsletter for the latest products and offers.
-            </p>
-            <form className="flex flex-col space-y-3">
-              <input
-                type="email"
-                placeholder="Your email address"
-                className="bg-white/10 border border-white/20 rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                required
-              />
-              <button
-                type="submit"
-                className="bg-gradient-to-r from-cyan-500 to-purple-600 text-white rounded-lg px-4 py-2 text-sm font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
-              >
-                Subscribe
-              </button>
-            </form>
-          </div>
         </div>
 
         {/* Copyright */}

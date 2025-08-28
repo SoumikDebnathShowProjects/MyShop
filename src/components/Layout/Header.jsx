@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { useAuth } from "../../context/auth";
 import toast from "react-hot-toast";
@@ -14,8 +14,16 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
 
-  ////////////////////////////////////////
+  useEffect(() => {
+    if (auth?.user?.role === 1) {
+      setIsAdmin(true);
+    } else {
+      setIsAdmin(false);
+    }
+  }, [auth]);
+
   // Logout Handler
   const handleLogout = () => {
     setAuth({
@@ -27,7 +35,6 @@ const Header = () => {
     toast.success("Logout Successfully");
   };
 
-  ////////////////////////////////////////
   // Toggle Handlers
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -41,8 +48,6 @@ const Header = () => {
     setIsUserMenuOpen(!isUserMenuOpen);
   };
 
-  ////////////////////////////////////////
-  // JSX Return: Modern Glassmorphism Navbar
   return (
     <nav className="sticky top-0 z-50 w-full backdrop-blur-md bg-gradient-to-r from-slate-900/95 via-purple-900/95 to-slate-900/95 border-b border-white/10 shadow-2xl">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -81,58 +86,60 @@ const Header = () => {
               Home
             </NavLink>
 
-            {/* Categories Dropdown */}
-            <div className="relative">
-              <button
-                className="flex items-center space-x-1 px-3 py-2 rounded-lg text-sm text-white/80 hover:text-white hover:bg-white/10 font-medium transition-all duration-300"
-                onClick={toggleCategories}
-                aria-expanded={isCategoriesOpen}
-              >
-                <span>Categories</span>
-                <svg
-                  className={`w-3 h-3 transition-transform duration-300 ${
-                    isCategoriesOpen ? "rotate-180" : ""
-                  }`}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
+            {/* Categories Dropdown - Only show for admin */}
+            {isAdmin && (
+              <div className="relative">
+                <button
+                  className="flex items-center space-x-1 px-3 py-2 rounded-lg text-sm text-white/80 hover:text-white hover:bg-white/10 font-medium transition-all duration-300"
+                  onClick={toggleCategories}
+                  aria-expanded={isCategoriesOpen}
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-              
-              {/* Categories Dropdown Menu */}
-              <div
-                className={`absolute top-full left-0 transform mt-1 w-56 bg-white/10 backdrop-blur-xl rounded-xl shadow-2xl border border-white/20 transition-all duration-300 ${
-                  isCategoriesOpen
-                    ? "opacity-100 visible translate-y-0"
-                    : "opacity-0 invisible -translate-y-2 pointer-events-none"
-                }`}
-              >
-                <div className="p-1">
-                  <Link
-                    className="block px-3 py-2 text-sm text-white/90 hover:bg-white/20 rounded-lg transition-all duration-200 font-medium"
-                    to="/categories"
-                    onClick={() => setIsCategoriesOpen(false)}
+                  <span>Categories</span>
+                  <svg
+                    className={`w-3 h-3 transition-transform duration-300 ${
+                      isCategoriesOpen ? "rotate-180" : ""
+                    }`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
                   >
-                    <span className="flex items-center space-x-2">
-                      <span>📁</span>
-                      <span>All Categories</span>
-                    </span>
-                  </Link>
-                  {categories?.map((c, index) => (
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                
+                {/* Categories Dropdown Menu */}
+                <div
+                  className={`absolute top-full left-0 transform mt-1 w-56 bg-white/10 backdrop-blur-xl rounded-xl shadow-2xl border border-white/20 transition-all duration-300 ${
+                    isCategoriesOpen
+                      ? "opacity-100 visible translate-y-0"
+                      : "opacity-0 invisible -translate-y-2 pointer-events-none"
+                  }`}
+                >
+                  <div className="p-1">
                     <Link
-                      key={index}
-                      className="block px-3 py-2 text-sm text-white/90 hover:bg-white/20 rounded-lg transition-all duration-200"
-                      to={`/category/${c.slug}`}
+                      className="block px-3 py-2 text-sm text-white/90 hover:bg-white/20 rounded-lg transition-all duration-200 font-medium"
+                      to="/categories"
                       onClick={() => setIsCategoriesOpen(false)}
                     >
-                      {c.name}
+                      <span className="flex items-center space-x-2">
+                        <span>📁</span>
+                        <span>All Categories</span>
+                      </span>
                     </Link>
-                  ))}
+                    {categories?.map((c, index) => (
+                      <Link
+                        key={index}
+                        className="block px-3 py-2 text-sm text-white/90 hover:bg-white/20 rounded-lg transition-all duration-200"
+                        to={`/category/${c.slug}`}
+                        onClick={() => setIsCategoriesOpen(false)}
+                      >
+                        {c.name}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
 
             {/* Search Input */}
             <div className="flex-1 max-w-md mx-4">
@@ -243,29 +250,29 @@ const Header = () => {
             </Badge>
 
             {/* Mobile menu button */}
-          <button
-  className="lg:hidden flex items-center justify-center w-10 h-10 rounded-lg bg-white/10 text-white hover:bg-white/20 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-purple-500"
-  onClick={toggleMenu}
-  aria-label="Toggle navigation"
->
-  <div className="w-6 h-6 relative flex flex-col items-center justify-center gap-1.5">
-    <span
-      className={`block w-5 h-0.5 bg-current transform transition-all duration-300 origin-center ${
-        isMenuOpen ? "rotate-45 translate-y-1.5" : ""
-      }`}
-    />
-    <span
-      className={`block w-5 h-0.5 bg-current transition-all duration-300 ${
-        isMenuOpen ? "opacity-0 scale-0" : "opacity-100 scale-100"
-      }`}
-    />
-    <span
-      className={`block w-5 h-0.5 bg-current transform transition-all duration-300 origin-center ${
-        isMenuOpen ? "-rotate-45 -translate-y-1.5" : ""
-      }`}
-    />
-  </div>
-</button>
+            <button
+              className="lg:hidden flex items-center justify-center w-10 h-10 rounded-lg bg-white/10 text-white hover:bg-white/20 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-purple-500"
+              onClick={toggleMenu}
+              aria-label="Toggle navigation"
+            >
+              <div className="w-6 h-6 relative flex flex-col items-center justify-center gap-1.5">
+                <span
+                  className={`block w-5 h-0.5 bg-current transform transition-all duration-300 origin-center ${
+                    isMenuOpen ? "rotate-45 translate-y-1.5" : ""
+                  }`}
+                />
+                <span
+                  className={`block w-5 h-0.5 bg-current transition-all duration-300 ${
+                    isMenuOpen ? "opacity-0 scale-0" : "opacity-100 scale-100"
+                  }`}
+                />
+                <span
+                  className={`block w-5 h-0.5 bg-current transform transition-all duration-300 origin-center ${
+                    isMenuOpen ? "-rotate-45 -translate-y-1.5" : ""
+                  }`}
+                />
+              </div>
+            </button>
           </div>
         </div>
       </div>
@@ -302,56 +309,58 @@ const Header = () => {
               Home
             </NavLink>
 
-            {/* Mobile Categories */}
-            <div>
-              <button
-                className="w-full flex items-center justify-between px-3 py-2 text-sm text-white/80 hover:text-white hover:bg-white/10 rounded-lg font-medium transition-all duration-300"
-                onClick={toggleCategories}
-                aria-expanded={isCategoriesOpen}
-              >
-                <span>Categories</span>
-                <svg
-                  className={`w-4 h-4 transition-transform duration-300 ${
-                    isCategoriesOpen ? "rotate-180" : ""
+            {/* Mobile Categories - Only show for admin */}
+            {isAdmin && (
+              <div>
+                <button
+                  className="w-full flex items-center justify-between px-3 py-2 text-sm text-white/80 hover:text-white hover:bg-white/10 rounded-lg font-medium transition-all duration-300"
+                  onClick={toggleCategories}
+                  aria-expanded={isCategoriesOpen}
+                >
+                  <span>Categories</span>
+                  <svg
+                    className={`w-4 h-4 transition-transform duration-300 ${
+                      isCategoriesOpen ? "rotate-180" : ""
+                    }`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                
+                <div
+                  className={`mt-1 space-y-1 pl-3 transition-all duration-300 ${
+                    isCategoriesOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0 overflow-hidden"
                   }`}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-              
-              <div
-                className={`mt-1 space-y-1 pl-3 transition-all duration-300 ${
-                  isCategoriesOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0 overflow-hidden"
-                }`}
-              >
-                <Link
-                  className="block px-3 py-1.5 text-sm text-white/70 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200"
-                  to="/categories"
-                  onClick={() => {
-                    setIsCategoriesOpen(false);
-                    setIsMenuOpen(false);
-                  }}
-                >
-                  All Categories
-                </Link>
-                {categories?.map((c, index) => (
                   <Link
-                    key={index}
                     className="block px-3 py-1.5 text-sm text-white/70 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200"
-                    to={`/category/${c.slug}`}
+                    to="/categories"
                     onClick={() => {
                       setIsCategoriesOpen(false);
                       setIsMenuOpen(false);
                     }}
                   >
-                    {c.name}
+                    All Categories
                   </Link>
-                ))}
+                  {categories?.map((c, index) => (
+                    <Link
+                      key={index}
+                      className="block px-3 py-1.5 text-sm text-white/70 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200"
+                      to={`/category/${c.slug}`}
+                      onClick={() => {
+                        setIsCategoriesOpen(false);
+                        setIsMenuOpen(false);
+                      }}
+                    >
+                      {c.name}
+                    </Link>
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
 
             {/* Mobile Authentication */}
             {!auth?.user ? (

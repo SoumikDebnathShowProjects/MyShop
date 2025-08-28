@@ -7,15 +7,17 @@ import { useAuth } from "../../context/auth";
 import { motion } from "framer-motion";
 import { FaEnvelope, FaLock, FaArrowRight } from "react-icons/fa";
 
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [auth, setAuth] = useAuth();
-
   const navigate = useNavigate();
   const location = useLocation();
+/////////////////////////////////////////////
 
+/////////////////////////////////////////////
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -60,7 +62,7 @@ const Login = () => {
               Welcome Back
             </h2>
             <p className="mt-2 text-sm text-white/80">
-              Sign in to your GadgetGalaxy account
+              Sign in to your MyShop account
             </p>
           </div>
 

@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Layout from "../components/Layout/Layout";
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useCart } from "../context/cart";
 import toast from "react-hot-toast";
-
+import Product from '../components/Product';
 
 const CategoryProduct = () => {
   const params = useParams();
-  const [cart,setCart] = useCart();
-  const navigate = useNavigate();
   const [products, setProducts] = useState([]);
   const [category, setCategory] = useState([]);
 
@@ -36,58 +34,10 @@ const CategoryProduct = () => {
         <div className="row">
           <div className="col-md-9 offset-1">
             <div className="d-flex flex-wrap">
-              {products?.map((p) => (
-                              <Link to={`/product/${p.slug}`} className="card-link"   style={{ textDecoration: 'none' }}>
-
-                <div
-                  className="card cardpro m-2"
-                  style={{ width: "18rem" }}
-                  key={p._id}
-                >
-                  <img
-                    src={`http://localhost:8080/api/v1/product/product-photo/${p._id}`}
-                    className="card-img-top"
-                    style={{
-                      width: "100%",
-                      height: "auto",
-                      maxHeight: "280px",
-                    }}
-                    alt={p.name}
-                  />
-                  <div className="card-body">
-                    <h5 className="card-title">{p.name.substring(0, 40)}</h5>
-                    <p className="card-text">
-                      {p.description.substring(0, 30)}...
-                    </p>
-                    <p className="card-text"> $ {p.price}</p>
-                    <button
-                      className="btn btn-primary ms-1"
-                      onClick={() => navigate(`/product/${p.slug}`)}
-                    >
-                      More Details
-                    </button>
-                    <button className="btn btn-secondary ms-1" onClick={() => {setCart([...cart,p])
-                toast.success('Item added to cart')}}>
-                      ADD TO CART
-                    </button>
-                  </div>
-                </div>
-                </Link>
+              {products.map((p) => (
+                <Product key={p._id} post={p} />
               ))}
             </div>
-            {/* <div className="m-2 p-3">
-            {products && products.length < total && (
-              <button
-                className="btn btn-warning"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setPage(page + 1);
-                }}
-              >
-                {loading ? "Loading ..." : "Loadmore"}
-              </button>
-            )}
-          </div> */}
           </div>
         </div>
       </div>

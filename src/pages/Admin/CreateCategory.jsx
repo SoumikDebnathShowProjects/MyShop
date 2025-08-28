@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
-import Layout from "../../components/Layout/Layout";
-import AdminMenu from "../../components/Layout/AdminMenu";
+import { useEffect, useState } from "react";
+
 import toast from "react-hot-toast";
 import axios from "axios";
 import CategoryForm from "../../components/Form/CategoryForm";
 import { Modal, Table, Button, Badge } from "antd";
 import { motion } from "framer-motion";
 import { FaEdit, FaTrash, FaPlusCircle } from "react-icons/fa";
+
 
 const CreateCategory = () => {
   const [categories, setCategories] = useState([]);
@@ -15,13 +15,14 @@ const CreateCategory = () => {
   const [selected, setSelected] = useState(null);
   const [updatedName, setUpdatedName] = useState("");
   const [loading, setLoading] = useState(false);
+  const BASE_URL=import.meta.env.VITE_BASE_URL;
 
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       setLoading(true);
-      const { data } = await axios.post("http://localhost:8080/api/v1/category/create-category", { name });
+      const { data } = await axios.post(`${BASE_URL}/category/create-category`, { name });
       if (data?.success) {
         toast.success(`${name} category created`);
         setName("");
@@ -41,7 +42,7 @@ const CreateCategory = () => {
   const getAllCategory = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.get("http://localhost:8080/api/v1/category/get-category");
+      const { data } = await axios.get(`${BASE_URL}/category/get-category`);
       if (data.success) {
         setCategories(data.category);
       }
@@ -63,7 +64,7 @@ const CreateCategory = () => {
     try {
       setLoading(true);
       const { data } = await axios.put(
-        `http://localhost:8080/api/v1/category/update-category/${selected._id}`,
+        `${BASE_URL}/category/update-category/${selected._id}`,
         { name: updatedName }
       );
       if (data.success) {
@@ -89,7 +90,7 @@ const CreateCategory = () => {
       if (answer && answer.toUpperCase() === "YES") {
         setLoading(true);
         const { data } = await axios.delete(
-          `http://localhost:8080/api/v1/category/delete-category/${pId}`
+          `${BASE_URL}/category/delete-category/${pId}`
         );
         if (data.success) {
           toast.success("Category deleted successfully");
@@ -145,13 +146,8 @@ const CreateCategory = () => {
   ];
 
   return (
-    <Layout title={"Dashboard - Category Management"}>
       <div className="min-h-screen bg-gradient-to-b from-slate-900 to-purple-900/10 py-8 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-4 gap-6">
-          {/* Admin Menu Sidebar */}
-          <div className="lg:col-span-1">
-            <AdminMenu />
-          </div>
 
           {/* Main Content */}
           <div className="lg:col-span-3">
@@ -231,7 +227,6 @@ const CreateCategory = () => {
           />
         </Modal>
       </div>
-    </Layout>
   );
 };
 

@@ -2,7 +2,7 @@ import React from "react";
 import { useSearch } from "../../context/search";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import { IoSearchSharp } from "react-icons/io5";
 const SearchInput = () => {
   const [values, setValues] = useSearch();
   const navigate = useNavigate();
@@ -27,7 +27,7 @@ const SearchInput = () => {
         onSubmit={handleSubmit}
       >
         <input
-          className="flex-grow px-4 py-2 focus:outline-none"
+          className="flex-grow px-4 py-2 focus:outline-none bg-white"
           type="search"
           placeholder="Search products..."
           aria-label="Search products"
@@ -35,10 +35,10 @@ const SearchInput = () => {
           onChange={(e) => setValues({ ...values, keyword: e.target.value })}
         />
         <button 
-          className="bg-blue-600 text-white px-4 py-2 hover:bg-blue-700 transition-colors duration-200"
+          className=" text-white px-4 py-2transition-colors duration-200"
           type="submit"
         >
-          Search
+          <IoSearchSharp />
         </button>
       </form>
     </div>

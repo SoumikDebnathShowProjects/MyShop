@@ -38,14 +38,9 @@ const Products = () => {
   );
 
   return (
-    <Layout title={"Admin - Products Management"}>
+    // <Layout title={"Admin - Products Management"}>
       <div className="min-h-screen bg-gradient-to-b from-slate-900 to-purple-900/10 py-8 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-4 gap-6">
-          {/* Admin Menu Sidebar */}
-          <div className="lg:col-span-1">
-            <AdminMenu />
-          </div>
-
           {/* Main Content */}
           <div className="lg:col-span-3">
             <motion.div
@@ -155,7 +150,7 @@ const Products = () => {
           </div>
         </div>
       </div>
-    </Layout>
+    // </Layout>
   );
 };
 

@@ -25,6 +25,8 @@ import CartPage from "./pages/CartPage";
 import PrivateRoute from "./components/Routes/PrivateRoute";
 import 'react-toastify/dist/ReactToastify.css';
 import AdminRoute from "./components/Routes/AdminRoute";
+import AdminLayout from "./components/Layout/AdminLayout";
+import SavedProducts from "./pages/SavedProducts";
 // import AdminHomepageController from "./pages/Admin/AdminHomepageController";
 
 function App() {
@@ -44,6 +46,7 @@ function App() {
         <Route path="/categories" element={<Categories />} />
         <Route path="/category/:slug" element={<CategoryProduct />} />
         <Route path="/cart" element={<CartPage />} />
+        <Route path="/product/save" element={<SavedProducts/>}/>
 
         {/* Protected Routes under /dashboard */}
         <Route path="/dashboard">
@@ -54,17 +57,18 @@ function App() {
             <Route path="user/profile" element={<Profile />} />
           </Route>
 
-          {/* Admin Routes - AdminOnly */}
-          <Route element={<AdminRoute />}>
-            <Route path="admin" element={<AdminDashboard />} />
-            <Route path="admin/create-category" element={<CreateCategory />} />
-            <Route path="admin/create-product" element={<CreateProduct />} />
-            <Route path="admin/product/:slug" element={<UpdateProduct />} />
-            <Route path="admin/products" element={<Products />} />
-            <Route path="admin/orders" element={<AdminOrders />} />
-            <Route path="admin/users" element={<Users />} />
-            {/* <Route path="admin/adminHomePageController" element={<AdminHomepageController/>} /> */}
-          </Route>
+
+   <Route element={<AdminRoute />}>
+  <Route path="/dashboard/admin" element={<AdminLayout />}>
+    <Route index element={<AdminDashboard />} />
+    <Route path="create-category" element={<CreateCategory />} />
+    <Route path="create-product" element={<CreateProduct />} />
+    <Route path="product/:slug" element={<UpdateProduct />} />
+    <Route path="orders" element={<AdminOrders />} />
+    <Route path="products" element={<Products />} />
+    <Route path="users" element={<Users />} />
+  </Route>
+</Route>
         </Route>
 
         {/* Catch-All */}

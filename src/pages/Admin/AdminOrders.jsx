@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
-import AdminMenu from "../../components/Layout/AdminMenu";
-import Layout from "../../components/Layout/Layout";
 import { useAuth } from "../../context/auth";
 import moment from "moment";
 import { Select, Badge } from "antd";
@@ -69,13 +67,8 @@ const AdminOrders = () => {
   };
 
   return (
-    <Layout title={"Admin Orders Dashboard"}>
       <div className="min-h-screen bg-gradient-to-b from-slate-900 to-purple-900/10 py-8 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-4 gap-6">
-          {/* Admin Menu Sidebar */}
-          <div className="lg:col-span-1">
-            <AdminMenu />
-          </div>
 
           {/* Orders Main Content */}
           <div className="lg:col-span-3">
@@ -238,7 +231,6 @@ const AdminOrders = () => {
           </div>
         </div>
       </div>
-    </Layout>
   );
 };
 

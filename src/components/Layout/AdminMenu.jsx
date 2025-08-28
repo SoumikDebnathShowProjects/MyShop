@@ -1,48 +1,20 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { 
-  FaLayerGroup, 
-  FaPlusCircle, 
-  FaBoxes, 
-  FaClipboardList,
-  FaUsersCog
-} from "react-icons/fa";
 import { motion } from "framer-motion";
+import { useRecoilValue } from "recoil";
+
+import { FaLayerGroup, FaPlusCircle, FaBoxes, FaClipboardList } from "react-icons/fa";
+import { adminMenuAtom } from "../../recoil/adminAtoms";
+
+const iconMap = {
+  FaLayerGroup: <FaLayerGroup className="mr-3" size={18} />,
+  FaPlusCircle: <FaPlusCircle className="mr-3" size={18} />,
+  FaBoxes: <FaBoxes className="mr-3" size={18} />,
+  FaClipboardList: <FaClipboardList className="mr-3" size={18} />
+};
 
 const AdminMenu = () => {
-  const menuItems = [
-    {
-      path: "/dashboard/admin/create-category",
-      name: "Manage Categories",
-      icon: <FaLayerGroup className="mr-3" size={18} />
-    },
-    {
-      path: "/dashboard/admin/create-product",
-      name: "Create Product",
-      icon: <FaPlusCircle className="mr-3" size={18} />
-    },
-    {
-      path: "/dashboard/admin/products",
-      name: "Manage Products",
-      icon: <FaBoxes className="mr-3" size={18} />
-    },
-    {
-      path: "/dashboard/admin/orders",
-      name: "Manage Orders",
-      icon: <FaClipboardList className="mr-3" size={18} />
-    },
-    // {
-    //   path: "/dashboard/admin/homeManage",
-    //   name: "Manage HomePage",
-    //   icon: <FaUsersCog className="mr-3" size={18} />
-    // }
-    // Uncomment when needed:
-    // {
-    //   path: "/dashboard/admin/users",
-    //   name: "Manage Users",
-    //   icon: <FaUsersCog className="mr-3" size={18} />
-    // }
-  ];
+  const menuItems = useRecoilValue(adminMenuAtom); // ✅ Only re-renders if menu changes
 
   return (
     <div className="bg-slate-800/50 backdrop-blur-lg rounded-xl p-5 border border-white/10 shadow-lg">
@@ -75,7 +47,7 @@ const AdminMenu = () => {
               }
             >
               <span className="text-purple-400">
-                {item.icon}
+                {iconMap[item.icon]}
               </span>
               {item.name}
             </NavLink>
