@@ -14,6 +14,8 @@ import {
   realtedProductController,
   searchProductController,
   updateProductController,
+  saveProductController,        // Add this import
+  getSavedProductsController    // Add this import
 } from "../controllers/productController.js";
 import { isAdmin, requireSignIn } from "../middlewares/authMiddleware.js";
 import formidable from "express-formidable";
@@ -35,6 +37,7 @@ router.post(
   formidable(),
   createProductController
 );
+
 //routes
 router.put(
   "/update-product/:pid",
@@ -76,23 +79,32 @@ router.get("/related-product/:pid/:cid", realtedProductController);
 //category wise product
 router.get("/product-category/:slug", productCategoryController);
 
+// Save/Unsave product route
+router.put(
+  "/save-product/:pid",
+  requireSignIn,                // User must be logged in
+  saveProductController
+);
+
+// Get saved products route
+router.get(
+  "/saved-products",
+  requireSignIn,                // User must be logged in
+  getSavedProductsController
+);
+
 // payments routes
 // getting token
 router.get("/braintree/token", braintreeTokenController);
 
 // payements routes
 router.post('/braintree/payment', requireSignIn, brainTreePaymentController);
-//Hub
-router.post("/hubs", requireSignIn,
-  isAdmin, createHubController);
-router.get("/hubs",  requireSignIn,
-  isAdmin,getAllHubsController);
-router.get("/hubs/:id",  requireSignIn,
-  isAdmin,getSingleHubController);
-router.put("/hubs/:id",  requireSignIn,
-  isAdmin,updateHubController);
-router.delete("/hubs/:id", requireSignIn,
-  isAdmin, deleteHubController);
 
+//Hub
+router.post("/hubs", requireSignIn, isAdmin, createHubController);
+router.get("/hubs", requireSignIn, isAdmin, getAllHubsController);
+router.get("/hubs/:id", requireSignIn, isAdmin, getSingleHubController);
+router.put("/hubs/:id", requireSignIn, isAdmin, updateHubController);
+router.delete("/hubs/:id", requireSignIn, isAdmin, deleteHubController);
 
 export default router;

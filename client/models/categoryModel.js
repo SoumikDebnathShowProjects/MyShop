@@ -13,10 +13,6 @@ const categorySchema = new mongoose.Schema({
     unique: true,
     lowercase: true
   },
-  image: {
-    type: String,
-    required: true
-  }
 }, { timestamps: true });
 
 // Register the model if it doesn't exist

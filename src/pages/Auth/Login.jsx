@@ -130,7 +130,7 @@ const Login = () => {
 
           <div className="text-center">
             <p className="text-sm text-white/70">
-              New to GadgetGalaxy?{" "}
+              New Customer?{" "}
               <Link
                 to="/register"
                 className="font-medium text-purple-400 hover:text-purple-300 transition-colors"

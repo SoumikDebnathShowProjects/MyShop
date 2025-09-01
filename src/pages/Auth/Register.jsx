@@ -55,7 +55,7 @@ const Register = () => {
               Create Your Account
             </h2>
             <p className="mt-2 text-sm text-white/80">
-              Join GadgetGalaxy to explore the latest tech
+              Join MyShop to explore the latest Prducts
             </p>
           </div>
 

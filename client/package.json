@@ -30,9 +30,16 @@
     "morgan": "^1.10.0",
     "multer": "^2.0.2",
     "multer-storage-cloudinary": "^4.0.0",
+    "node-mailer": "^0.1.1",
+    "node-schedule": "^2.1.1",
+    "nodemailer": "^6.10.1",
     "nodemon": "^3.0.3",
-    "react-hot-toast": "^2.4.1",
+    "otp-generator": "^4.0.1",
+    "react-hot-toast": "^2.5.2",
     "react-infinite-scroll-component": "^6.1.0",
     "slugify": "^1.6.6"
+  },
+  "devDependencies": {
+    "@types/nodemailer": "^6.4.17"
   }
 }

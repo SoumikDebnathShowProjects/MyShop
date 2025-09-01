@@ -3,9 +3,7 @@ import { comparePassword, hashPassword } from "../helpers/authHelper.js";
 import userModel from "../models/userModel.js";
 import orderModel from "../models/orderModel.js";
 import JWT from "jsonwebtoken";
-
-// ALL are API
-
+import bcrypt from "bcrypt";
 
 // POST || Register route--------------------------------------------------------
 export const registerController = async (req, res) => {
@@ -33,6 +31,7 @@ export const registerController = async (req, res) => {
     }
     //check user
     const exisitingUser = await userModel.findOne({ email });
+    
     //already exisiting user  -- no registration
     if (exisitingUser) {
       return res.status(200).send({
@@ -262,4 +261,165 @@ export const orderStatusController = async (req, res) => {
       error,
     });
   }
+};
+/////////////////////future use////////////////////////
+
+import otpGenerator from "otp-generator";
+import OTP from "../models/OTP.js";
+// ALL are API
+// Reset password by sending OTP to user's email
+export const resetPassword = async (req, res) => {
+  try {
+    const { email } = req.body;
+    console.log("Request for reset password from email:", email);
+
+    // 1. Check if user exists
+    const checkUserPresent = await userModel.findOne({ email });
+    if (!checkUserPresent) {
+      return res.status(404).json({
+        success: false,
+        message: "User not found",
+      });
+    }
+
+    // 2. Generate unique 6-digit OTP
+    let otp = otpGenerator.generate(6, {
+      upperCaseAlphabets: false,
+      lowerCaseAlphabets: false,
+      specialChars: false,
+    });
+
+    let existingOtp = await OTP.findOne({ otp });
+    while (existingOtp) {
+      otp = otpGenerator.generate(6, {
+        upperCaseAlphabets: false,
+        lowerCaseAlphabets: false,
+        specialChars: false,
+      });
+      existingOtp = await OTP.findOne({ otp });
+    }
+
+    // 3. Save OTP to DB
+    const otpPayload = { email, otp };
+    const otpEntry = await OTP.create(otpPayload);
+    console.log("OTP stored in DB:", otpEntry);
+
+    // 4. Return success response
+    res.status(200).json({
+      success: true,
+      message: "OTP sent successfully",
+      otp, // in production, don't return OTP in response
+    });
+  } catch (error) {
+    console.error("Error in resetPassword:", error);
+    return res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+////////////////////reset using otp /////////////////////////
+// Reset Password Controller
+export const resetPasswordotp = async (req, res) => {
+  try {
+    const { email, otp, newPassword } = req.body;
+
+    // 1. Check if OTP exists and valid
+    const otpDoc = await OTP.findOne({ email, otp });
+    if (!otpDoc) {
+      return res.status(400).json({ success: false, message: "Invalid or expired OTP" });
+    }
+
+    // 2. Hash the new password
+    const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+    // 3. Update user's password
+    const user = await userModel.findOneAndUpdate(
+      { email },
+      { password: hashedPassword },
+      { new: true }
+    );
+
+    if (!user) {
+      return res.status(404).json({ success: false, message: "User not found" });
+    }
+
+    // 4. Delete the OTP after successful use
+    await OTP.deleteOne({ email, otp });
+
+    return res.status(200).json({
+      success: true,
+      message: "Password reset successful. Please log in with your new password.",
+    });
+  } catch (error) {
+    console.error("Error resetting password:", error);
+    res.status(500).json({ success: false, message: "Server error" });
+  }
+};
+
+//This part is sentding otp if the email is found
+export const sendOTP = async (req, res) =>  {
+
+    try {
+        //fetch email from request ki body
+      const {email} = req.body;
+      console.log(email);
+        //check if user already exist
+        const checkUserPresent = await userModel.findOne({email});
+        console.log(checkUserPresent);
+        
+        ///if user already exist , then return a response
+        if(checkUserPresent) {
+    var otp = otpGenerator.generate(6, {
+            upperCaseAlphabets:false,
+            lowerCaseAlphabets:false,
+            specialChars:false,
+        });
+        console.log("OTP generated: ", otp );
+
+        //check unique otp or not
+        let result = await OTP.findOne({otp: otp});
+
+        while(result) {
+            otp = otpGenerator(6,{
+                upperCaseAlphabets:false,
+                lowerCaseAlphabets:false,
+                specialChars:false,
+            });
+            result = await OTP.findOne({otp: otp});
+        }
+
+        const otpPayload = {email, otp};
+
+        //create an entry for OTP
+        const otpBody = await OTP.create(otpPayload);
+        console.log(otpBody);
+
+        //return response successful
+        res.status(200).json({
+            success:true,
+            message:'OTP Sent Successfully',
+            otp,
+        })
+        }
+       else{
+         return res.status(401).json({
+                success:false,
+                message:'User not registered',
+            })
+       }
+        //generate otp
+        
+    }
+    catch(error) {
+      
+        console.log(error);
+        return res.status(500).json({
+            success:false,
+            message:error.message,
+        })
+
+    }
+
+
 };

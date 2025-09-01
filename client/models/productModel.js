@@ -31,9 +31,18 @@ const productSchema = new mongoose.Schema(
       data: Buffer,   //buffer for mongoDB string for aws
       contentType: String,
     },
+    stock:{
+      type:Number,
+      required:true,
+      default:0,
+    },
     shipping: {
       type: Boolean,
     },
+    save:{
+      type:Boolean,
+      default:false
+    }
   },
   { timestamps: true }
 );

@@ -20,7 +20,7 @@ var gateway = new braintree.BraintreeGateway({
 
 export const createProductController = async (req, res) => {
   try {
-    const { name, description, price, category, quantity, shipping } =
+    const { name, description, price, category, quantity,stock, shipping } =
       req.fields;
     const { photo } = req.files;
     //alidation
@@ -35,6 +35,8 @@ export const createProductController = async (req, res) => {
         return res.status(500).send({ error: "Category is Required" });
       case !quantity:
         return res.status(500).send({ error: "Quantity is Required" });
+      case !stock:
+        return res.status(500).send({ error: "Stock is Required" });
       case photo && photo.size > 1000000:
         return res
           .status(500)
@@ -147,8 +149,8 @@ export const deleteProductController = async (req, res) => {
 //upate products
 export const updateProductController = async (req, res) => {
   try {
-    const { name, description, price, category, quantity, shipping } =
-      req.fields;
+  const { name, description, price, category, quantity, stock, shipping } = req.fields;
+
     const { photo } = req.files;
     //alidation
     switch (true) {
@@ -162,6 +164,8 @@ export const updateProductController = async (req, res) => {
         return res.status(500).send({ error: "Category is Required" });
       case !quantity:
         return res.status(500).send({ error: "Quantity is Required" });
+      case !stock:
+        return res.status(500).send({ error: "Stock is Required" });
       case photo && photo.size > 1000000:
         return res
           .status(500)
@@ -383,7 +387,57 @@ export const brainTreePaymentController = async (req, res) => {
     console.log(error);
   }
 };
+/////saved product
+// Save/Unsave product controller
+export const saveProductController = async (req, res) => {
+  try {
+    const { pid } = req.params;
+    const { save } = req.body;
 
+    const product = await productModel.findByIdAndUpdate(
+      pid,
+      { save },
+      { new: true }
+    );
+
+    res.status(200).send({
+      success: true,
+      message: save ? "Product saved successfully" : "Product unsaved successfully",
+      product,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Error while saving product",
+      error,
+    });
+  }
+};
+
+// Get saved products
+export const getSavedProductsController = async (req, res) => {
+  try {
+    const products = await productModel
+      .find({ save: true })
+      .populate("category")
+      .select("-photo")
+      .sort({ createdAt: -1 });
+
+    res.status(200).send({
+      success: true,
+      message: "Saved products fetched successfully",
+      products,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Error while getting saved products",
+      error,
+    });
+  }
+};
 
 
 

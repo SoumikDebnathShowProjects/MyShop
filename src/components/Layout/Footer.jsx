@@ -6,7 +6,8 @@ const Footer = () => {
   return (
     <footer className="w-full backdrop-blur-md bg-gradient-to-r from-slate-900/95 via-purple-900/95 to-slate-900/95 border-t border-white/10 shadow-2xl mt-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 items-start">
           
           {/* Logo and Description */}
           <div className="space-y-4">
@@ -18,7 +19,7 @@ const Footer = () => {
                 MyShop
               </span>
             </Link>
-            <p className="text-white/70 text-sm">
+            <p className="text-white/70 text-sm max-w-xs">
               Your one-stop shop for the daily accessories.
             </p>
             <div className="flex space-x-4">
@@ -38,7 +39,7 @@ const Footer = () => {
           </div>
 
           {/* Quick Links */}
-          <div className="space-y-3">
+          <div className="space-y-3 md:ml-auto lg:ml-0">
             <h3 className="text-white font-semibold text-lg">Quick Links</h3>
             <ul className="space-y-2">
               <li>
@@ -71,7 +72,7 @@ const Footer = () => {
         </div>
 
         {/* Copyright */}
-        <div className="border-t border-white/10 mt-8 pt-6 flex flex-col md:flex-row justify-between items-center">
+        <div className="border-t border-white/10 mt-8 pt-6 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
           <p className="text-white/60 text-sm">
             &copy; {new Date().getFullYear()} MyShop. All rights reserved.
           </p>

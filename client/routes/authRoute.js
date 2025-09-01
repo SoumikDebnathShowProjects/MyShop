@@ -4,7 +4,10 @@ import {
     forgotPasswordController, updateProfileController, 
     getOrdersController,
     getAllOrdersController,
-    orderStatusController
+    orderStatusController,
+    sendOTP,
+    resetPassword,
+    resetPasswordotp
     
   } from "../controllers/authController.js";
  import { isAdmin, requireSignIn } from '../middlewares/authMiddleware.js';
@@ -13,6 +16,9 @@ import {
 const router = express.Router();
 
 //routing
+// Route for sending OTP to the user's email
+router.post("/sendotp", sendOTP);
+router.post("/resetpassword",resetPasswordotp);
 //REGISTER || METHOD POST
 router.post("/register", registerController);
 

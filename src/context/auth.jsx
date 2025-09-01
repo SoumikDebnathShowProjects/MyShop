@@ -24,7 +24,6 @@ const AuthProvider = ({children}) => {
 
             });
         }
-        //eslint-disable-next-line
       },[]);  //[] empty object
       /*
       not this [auth,setAuth]); it forms infinit loop
@@ -33,19 +32,12 @@ case, the issue arises from having auth and setAuth in the dependency array of t
 When you call setAuth inside the useEffect, it triggers a state change, which leads to a re-render of the component.
 The re-render will again invoke the useEffect, creating a loop if the dependencies trigger a state change. 
       */
-
-
-
-
       return(
         <AuthContext.Provider value={[auth,setAuth]}>
             {children}
         </AuthContext.Provider>
       )
 };
-
-
-
 // custom hook
 const useAuth = () => useContext(AuthContext)
 export {useAuth, AuthProvider}
