@@ -27,7 +27,7 @@ const Register = () => {
     setLoading(true);
     
     try {
-      const res = await axios.post("http://localhost:8080/api/v1/auth/register", formData);
+      const res = await axios.post(`${BASE_URL}/auth/register`, formData);
       if (res && res.data.success) {
         toast.success(res.data.message);
         navigate("/login");

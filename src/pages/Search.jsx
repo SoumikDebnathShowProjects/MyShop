@@ -11,7 +11,7 @@ const Search = () => {
   const navigate = useNavigate();
   const [cart, setCart] = useCart();
   const [values] = useSearch();
-
+ const BASE_URL=import.meta.env.VITE_BASE_URL;
   return (
     <Layout title={"Search results"}>
       <div className="container mx-auto px-4 py-8">
@@ -42,7 +42,7 @@ const Search = () => {
               >
                 <div className="p-4 bg-gray-50 flex justify-center items-center h-48">
                   <img
-                    src={`http://localhost:8080/api/v1/product/product-photo/${p._id}`}
+                    src={`${BASE_URL}/product/product-photo/${p._id}`}
                     className="h-full w-full object-contain"
                     alt={p.name}
                   />

@@ -10,14 +10,14 @@ const CategoryProduct = () => {
   const params = useParams();
   const [products, setProducts] = useState([]);
   const [category, setCategory] = useState([]);
-
+ const BASE_URL=import.meta.env.VITE_BASE_URL;
   useEffect(() => {
     if (params?.slug) getPrductsByCat();
   }, [params?.slug]);
   const getPrductsByCat = async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:8080/api/v1/product/product-category/${params.slug}`
+        `${BASE_URL}/product/product-category/${params.slug}`
       );
       setProducts(data?.products);
       setCategory(data?.category);

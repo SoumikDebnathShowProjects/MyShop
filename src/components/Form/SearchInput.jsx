@@ -6,12 +6,12 @@ import { IoSearchSharp } from "react-icons/io5";
 const SearchInput = () => {
   const [values, setValues] = useSearch();
   const navigate = useNavigate();
-
+  const BASE_URL=import.meta.env.VITE_BASE_URL;
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const { data } = await axios.get(
-        `http://localhost:8080/api/v1/product/search/${values.keyword}`
+        `${BASE_URL}/product/search/${values.keyword}`
       );
       setValues({ ...values, results: data });
       navigate("/search");

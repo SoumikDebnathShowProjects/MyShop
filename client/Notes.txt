@@ -55,7 +55,7 @@ added skeleton loading animation
 ----------------------------------------------------------------.env------------------------------------------------------------------
 PORT = 8080
 DEV_MODE = development mode
-DATABASE = mongodb+srv://akashghosh256:Akash1234@ecommercedatabase.ji64rnb.mongodb.net/?retryWrites=true&w=majority
+DATABASE = mongodb+srv://SoumikDebnath256:Soumik1234@ecommercedatabase.ji64rnb.mongodb.net/?retryWrites=true&w=majority
 JWT_SECRET_KEY = WHYAREYOUSEEINGTHISBROSEEXXXCOMGETTHEHELLOUTOFHERE
 BRAINTREE_MERCHANT_ID = 4dtxswdymncmw36v
 BRAINTREE_PUBLIC_KEY = qx3qtbh5nk3kfg56

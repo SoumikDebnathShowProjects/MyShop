@@ -17,7 +17,7 @@ const Products = () => {
   const getAllProducts = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.get("http://localhost:8080/api/v1/product/get-product");
+      const { data } = await axios.get("${BASE_URL}/product/get-product");
       setProducts(data.products);
     } catch (error) {
       console.log(error);
@@ -115,7 +115,7 @@ const Products = () => {
                       {/* Product Image */}
                       <div className="relative h-64 overflow-hidden">
                         <img
-                          src={`http://localhost:8080/api/v1/product/product-photo/${product._id}`}
+                          src={`${BASE_URL}/product/product-photo/${product._id}`}
                           className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                           alt={product.name}
                           loading="lazy"

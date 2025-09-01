@@ -30,7 +30,7 @@ const CartPage = () => {
       return "$0.00";
     }
   };
-
+ const BASE_URL=import.meta.env.VITE_BASE_URL;
   // Remove item from cart
   const removeCartItem = (pid) => {
     try {
@@ -47,7 +47,7 @@ const CartPage = () => {
   // Get payment gateway token
   const getToken = async () => {
     try {
-      const { data } = await axios.get("http://localhost:8080/api/v1/product/braintree/token");
+      const { data } = await axios.get(`${BASE_URL}/product/braintree/token`);
       setClientToken(data?.clientToken);
     } catch (error) {
       console.log(error);
@@ -64,7 +64,7 @@ const CartPage = () => {
     try {
       setLoading(true);
       const { nonce } = await instance.requestPaymentMethod();
-      await axios.post("http://localhost:8080/api/v1/product/braintree/payment", {
+      await axios.post(`${BASE_URL}/product/braintree/payment`, {
         nonce,
         cart,
       });
@@ -114,7 +114,7 @@ const CartPage = () => {
                     <div className="flex flex-col sm:flex-row">
                       <div className="sm:w-1/3">
                         <img
-                          src={`http://localhost:8080/api/v1/product/product-photo/${p._id}`}
+                          src={`${BASE_URL}/product/product-photo/${p._id}`}
                           className="w-full h-48 object-cover"
                           alt={p.name}
                           loading="lazy"

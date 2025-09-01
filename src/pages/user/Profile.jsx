@@ -15,7 +15,7 @@ const Profile = () => {
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-
+ const BASE_URL=import.meta.env.VITE_BASE_URL;
   useEffect(() => {
     const { email, name, phone, address } = auth?.user;
     setName(name);
@@ -28,7 +28,7 @@ const Profile = () => {
     e.preventDefault();
     setIsLoading(true);
     try {
-      const { data } = await axios.put("http://localhost:8080/api/v1/auth/profile", {
+      const { data } = await axios.put(`${BASE_URL}/auth/profile`, {
         name,
         email,
         password,

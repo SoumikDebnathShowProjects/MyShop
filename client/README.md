@@ -1,6 +1,6 @@
-# GadgetGalaxy
+# MYShop
 
-GadgetGalaxy is a comprehensive e-commerce website developed using the MERN stack. It offers a user-friendly platform for buying gadgets and electronics, with features such as cart management, real-time order tracking, and an intuitive admin panel for seamless product and category updates.
+MYShop is a comprehensive e-commerce website developed using the MERN stack. It offers a user-friendly platform for buying MYs and electronics, with features such as cart management, real-time order tracking, and an intuitive admin panel for seamless product and category updates.
 
 ## Features
 
@@ -13,38 +13,38 @@ GadgetGalaxy is a comprehensive e-commerce website developed using the MERN stac
 
 ## Screenshots
 ## Filtering products by category as well as by price
-![App Screenshot](https://github.com/akashghosh256/Ecommerce-App/blob/main/screenshots/filter.png)
+![App Screenshot](https://github.com/SoumikDebnath256/Ecommerce-App/blob/main/screenshots/filter.png)
 
 ## Admin order status management option for users-orders placed
-![App Screenshot](https://github.com/akashghosh256/Ecommerce-App/blob/main/screenshots/orderAdmin.png)
+![App Screenshot](https://github.com/SoumikDebnath256/Ecommerce-App/blob/main/screenshots/orderAdmin.png)
 
 
 
 ## Admin product management option like photos, price, description etc
-![App Screenshot](https://github.com/akashghosh256/Ecommerce-App/blob/main/screenshots/manageproduct.png)
+![App Screenshot](https://github.com/SoumikDebnath256/Ecommerce-App/blob/main/screenshots/manageproduct.png)
 
 ## Admin category management
-![App Screenshot](https://github.com/akashghosh256/Ecommerce-App/blob/main/screenshots/newcategory.png)
+![App Screenshot](https://github.com/SoumikDebnath256/Ecommerce-App/blob/main/screenshots/newcategory.png)
 
 
 ## Admin adding new product
-![App Screenshot](https://github.com/akashghosh256/Ecommerce-App/blob/main/screenshots/createproduct.png)
+![App Screenshot](https://github.com/SoumikDebnath256/Ecommerce-App/blob/main/screenshots/createproduct.png)
 
 
 ## Added features such as Infinite Scroll and skeleton effect for loading new products
-![App Screenshot](https://github.com/akashghosh256/Ecommerce-App/blob/main/screenshots/infinitescroll.png)
+![App Screenshot](https://github.com/SoumikDebnath256/Ecommerce-App/blob/main/screenshots/infinitescroll.png)
 
 
 ## User cart and payment gateway
-![App Screenshot](https://github.com/akashghosh256/Ecommerce-App/blob/main/screenshots/payment.png)
+![App Screenshot](https://github.com/SoumikDebnath256/Ecommerce-App/blob/main/screenshots/payment.png)
 
 
 ## Responsive website for mobile device users, featuring a search option for products.
 
-<img src="https://github.com/akashghosh256/Ecommerce-App/blob/main/screenshots/phone2.jpg" width="40%" height="34%">
+<img src="https://github.com/SoumikDebnath256/Ecommerce-App/blob/main/screenshots/phone2.jpg" width="40%" height="34%">
 
 ## User can check order status
-<img src="https://github.com/akashghosh256/Ecommerce-App/blob/main/screenshots/phone3.jpg" width="40%" height="34%">
+<img src="https://github.com/SoumikDebnath256/Ecommerce-App/blob/main/screenshots/phone3.jpg" width="40%" height="34%">
 
 
 
@@ -63,7 +63,7 @@ Password: user
 Clone the project
 
 ```bash
-  git clone https://github.com/akashghosh256/Ecommerce-App
+  git clone https://github.com/SoumikDebnath256/Ecommerce-App
 ```
 
 Go to the project directory

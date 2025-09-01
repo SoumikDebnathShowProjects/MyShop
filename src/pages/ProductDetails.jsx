@@ -22,7 +22,6 @@ const ProductDetails = () => {
   useEffect(() => {
     if (params?.slug) getProduct();
   }, [params?.slug]);
-
   const getProduct = async () => {
     try {
       setLoading(true);

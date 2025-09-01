@@ -30,7 +30,7 @@ router.post('/login',loginController)
 
 
 // test route
-//http://localhost:8080/api/v1/auth/test
+//${BASE_URL}/auth/test
 router.get('/test',requireSignIn,isAdmin, testController)
 
 

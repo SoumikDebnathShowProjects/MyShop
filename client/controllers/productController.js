@@ -344,15 +344,16 @@ export const braintreeTokenController = async (req, res) => {
   try {
     gateway.clientToken.generate({}, function (err, response) {
       if (err) {
-        res.status(500).send(err);
-      } else {
-        res.send(response);
+        return res.status(500).send(err);
       }
+      res.send({ clientToken: response.clientToken }); // ✅ send only the token
     });
   } catch (error) {
     console.log(error);
+    res.status(500).send(error);
   }
 };
+
 // created orderModel to update orders in database
 //payment
 export const brainTreePaymentController = async (req, res) => {

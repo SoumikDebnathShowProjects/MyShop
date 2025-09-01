@@ -6,11 +6,12 @@ import Spinner from "../Spinner.jsx";
 const PrivateRoute = () => {
 const [ok, setOk] = useState(false);
   const [auth] = useAuth();
+  const BASE_URL=import.meta.env.VITE_BASE_URL;
 
   useEffect(() => {
     const authCheck = async () => {
       try {
-        const res = await axios.get("http://localhost:8080/api/v1/auth/user-auth", {
+        const res = await axios.get(`${BASE_URL}/auth/user-auth`, {
           headers: {
             Authorization: auth?.token,
           },

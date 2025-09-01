@@ -31,12 +31,12 @@ const About = () => {
     {
       icon: <FaLaptopCode className="text-4xl mb-4 text-purple-400" />,
       title: "Tech Expertise",
-      description: "Deep knowledge in cutting-edge technologies and gadget trends"
+      description: "Deep knowledge in cutting-edge technologies and MY trends"
     },
     {
       icon: <FaRocket className="text-4xl mb-4 text-cyan-400" />,
       title: "Fast Delivery",
-      description: "Lightning-fast shipping to get your gadgets to you ASAP"
+      description: "Lightning-fast shipping to get your MYs to you ASAP"
     },
     {
       icon: <FaLightbulb className="text-4xl mb-4 text-purple-400" />,
@@ -70,7 +70,7 @@ const About = () => {
               variants={itemVariants}
               className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-white to-cyan-200 bg-clip-text text-transparent mb-6"
             >
-              About GadgetGalaxy
+              About MYShop
             </motion.h1>
             <motion.p 
               variants={itemVariants}
@@ -91,7 +91,7 @@ const About = () => {
               <div className="rounded-2xl overflow-hidden shadow-2xl border border-white/10 backdrop-blur-sm">
                 <img
                   src="/images/allround.jpg"
-                  alt="Akash Ghosh"
+                  alt="Soumik Debnath"
                   className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-500"
                 />
               </div>
@@ -109,7 +109,7 @@ const About = () => {
                 </span>
               </h2>
               <p className="text-white">
-                I'm Akash Ghosh, the solo virtuoso steering the ship at GadgetGalaxy. Armed with nothing but my trusty keyboard and an insatiable thirst for innovation, I've embarked on a solo odyssey to curate the finest array of tech marvels.
+                I'm Soumik Debnath, the solo virtuoso steering the ship at MYShop. Armed with nothing but my trusty keyboard and an insatiable thirst for innovation, I've embarked on a solo odyssey to curate the finest array of tech marvels.
               </p>
               <p className="text-white">
                 From conquering coding challenges to navigating the ever-changing seas of software development, I've honed my craft as a lone wolf developer. But fear not, for behind this solitary facade lies a powerhouse of creativity and ingenuity, ready to push the boundaries of what's possible in the digital realm.
@@ -131,7 +131,7 @@ const About = () => {
             className="mt-24"
           >
             <h2 className="text-3xl font-bold text-center text-white mb-12">
-              Why Choose <span className="bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">GadgetGalaxy</span>
+              Why Choose <span className="bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">MYShop</span>
             </h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -175,7 +175,7 @@ const About = () => {
     Our <span className="bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">Mission</span>
   </h2>
   <p className="text-white/80 text-center max-w-4xl mx-auto leading-relaxed">
-    At GadgetGalaxy, we're on a mission to revolutionize your tech experience by bringing you the most innovative, high-quality gadgets curated with passion and expertise. We believe technology should be accessible, exciting, and transformative - and we're here to guide you through the ever-evolving digital universe.
+    At MYShop, we're on a mission to revolutionize your tech experience by bringing you the most innovative, high-quality MYs curated with passion and expertise. We believe technology should be accessible, exciting, and transformative - and we're here to guide you through the ever-evolving digital universe.
   </p>
 </motion.div>
         </div>
