@@ -1,12 +1,60 @@
-# React + Vite
+MyShop
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+MyShop is a comprehensive e-commerce website developed using the MERN stack. It offers a user-friendly platform for buying gadgets and electronics, with features such as cart management, real-time order tracking, and an intuitive admin panel for seamless product and category updates.
 
-Currently, two official plugins are available:
+Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Cart Management: Users can easily add and remove items from their shopping carts.
 
-## Expanding the ESLint configuration
+Real-time Order Tracking: Users can track the status of their orders in real-time.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Admin Panel: Admins have access to an intuitive dashboard for managing products, categories, and orders.
+
+REST API and Context API: Efficient data management using REST API and Context API.
+
+Secure PayPal Payment Gateway: Integration of a secure payment gateway for smooth transactions.
+
+Advanced Filtering Options: Users can filter products by category and price for an enhanced browsing experience.
+
+Infinite Scroll & Skeleton Loader: Improved UX with infinite scroll and skeleton effects while loading new products.
+
+Responsive Design: Fully responsive layout optimized for mobile devices, including a product search feature.
+
+
+Demo Credentials
+
+Admin
+
+Email: admin@admin
+
+Password: admin
+
+User
+
+Email: user@user
+
+Password: user
+
+Run Locally
+
+Clone the project
+
+git clone https://github.com/soumikdebnat/Ecommerce-App
+
+
+Go to the project directory
+
+cd Ecommerce-App
+
+
+Install dependencies
+
+npm install
+
+
+Start the server and client together
+
+npm run dev
+
+
+👨‍💻 Developed by Soumik Debnat
